@@ -3,231 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mam do Ciebie pytanie… 🌸</title>
+  <title>Mam do Ciebie pytanie… 🥔</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:     #fdf6f0;
-      --rose:   #e8637a;
-      --rose2:  #f4a0b0;
-      --brown:  #5c3d2e;
-      --cream:  #fff8f4;
-      --border: rgba(92,61,46,.12);
-      --shadow: rgba(232,99,122,.18);
+      --bg:    #fdf6f0;
+      --rose:  #e8637a;
+      --rose2: #f4a0b0;
+      --brown: #5c3d2e;
+      --cream: #fff8f4;
+      --bord:  rgba(92,61,46,.12);
+      --shad:  rgba(232,99,122,.18);
     }
-
     html, body { height: 100%; }
-
     body {
       background: var(--bg);
       font-family: 'Lato', sans-serif;
       font-weight: 300;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-
-    /* petals bg */
     body::before {
-      content: "";
-      position: fixed; inset: 0;
+      content:""; position:fixed; inset:0; pointer-events:none;
       background:
         radial-gradient(ellipse 60% 50% at 15% 20%, rgba(244,160,176,.18) 0%, transparent 70%),
         radial-gradient(ellipse 50% 60% at 85% 80%, rgba(232,99,122,.13) 0%, transparent 70%),
         radial-gradient(ellipse 40% 40% at 60% 10%, rgba(255,220,210,.25) 0%, transparent 60%);
-      pointer-events: none;
     }
 
     /* ─── SCREENS ─── */
     .screen {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .6s ease;
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .6s ease;
     }
-    .screen.active {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .screen.active { opacity: 1; pointer-events: all; }
 
     /* ─── CARD ─── */
     .card {
       background: var(--cream);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bord);
       border-radius: 24px;
-      padding: 56px 52px;
-      max-width: 480px;
-      width: 90%;
+      padding: 48px 44px;
+      max-width: 500px; width: 92%;
       text-align: center;
       box-shadow: 0 24px 80px rgba(92,61,46,.08), 0 4px 16px rgba(232,99,122,.06);
-      position: relative;
     }
-
-    .petal-deco {
-      font-size: 2.4rem;
-      letter-spacing: .15em;
-      margin-bottom: 28px;
-      display: block;
-      line-height: 1;
-    }
+    .deco { font-size: 2.4rem; margin-bottom: 18px; display: block; }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: 2.2rem;
-      color: var(--brown);
-      line-height: 1.25;
-      margin-bottom: 14px;
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: 2.1rem; color: var(--brown); line-height: 1.25; margin-bottom: 10px;
     }
-    h1 em {
-      font-style: italic;
-      color: var(--rose);
-    }
-
-    .sub {
-      font-size: .9rem;
-      color: #a08070;
-      line-height: 1.8;
-      margin-bottom: 40px;
-    }
+    h1 em { font-style: italic; color: var(--rose); }
+    .sub { font-size: .88rem; color: #a08070; line-height: 1.8; margin-bottom: 28px; }
 
     /* ─── BUTTONS ─── */
-    .btn-row {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
     .btn {
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      font-size: .9rem;
-      letter-spacing: .06em;
-      border: none;
-      border-radius: 100px;
-      cursor: pointer;
+      font-family: 'Lato', sans-serif; font-weight: 400;
+      font-size: .9rem; letter-spacing: .06em;
+      border: none; border-radius: 100px; cursor: pointer;
       transition: transform .2s, box-shadow .2s;
-      text-decoration: none;
-      display: inline-block;
     }
     .btn-yes {
-      background: var(--rose);
-      color: #fff;
-      padding: 15px 38px;
-      box-shadow: 0 8px 28px var(--shadow);
+      background: var(--rose); color: #fff; padding: 15px 38px;
+      box-shadow: 0 8px 28px var(--shad);
     }
-    .btn-yes:hover {
-      transform: translateY(-2px) scale(1.04);
-      box-shadow: 0 14px 36px var(--shadow);
-    }
+    .btn-yes:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 36px var(--shad); }
     .btn-no {
-      background: transparent;
-      color: #c0a898;
-      border: 1px solid var(--border);
-      padding: 14px 28px;
-      position: fixed; /* pozwoli uciec poza karta */
+      background: transparent; color: #c0a898;
+      border: 1px solid var(--bord); padding: 14px 28px;
+      position: fixed;
     }
+    .btn-row { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; }
 
-    /* ─── FORM ─── */
-    .form-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      color: var(--brown);
-      margin-bottom: 8px;
+    /* ─── CAT SCREEN ─── */
+    .cat-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
     }
-    .form-sub {
-      font-size: .85rem;
-      color: #a08070;
-      margin-bottom: 32px;
-      line-height: 1.7;
-    }
-
-    .field { margin-bottom: 20px; text-align: left; }
-    .field label {
+    .cat-gif {
+      width: 200px; height: 200px; object-fit: cover;
+      border-radius: 20px; border: 2px solid var(--bord);
       display: block;
-      font-size: .72rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #a08070;
-      margin-bottom: 7px;
     }
-    .field input, .field textarea, .field select {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--bg);
-      color: var(--brown);
-      font-family: 'Lato', sans-serif;
-      font-size: .88rem;
-      font-weight: 300;
-      outline: none;
+    .cat-title {
+      font-family: 'Playfair Display', serif; font-size: 1.7rem;
+      color: var(--brown); line-height: 1.3;
+    }
+    .cat-title em { font-style: italic; color: var(--rose); }
+    .cat-sub { font-size: .85rem; color: #a08070; line-height: 1.7; }
+
+    /* ─── ACTIVITY PICKER ─── */
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: 1.55rem;
+      color: var(--brown); margin-bottom: 6px;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .section-sub { font-size: .82rem; color: #a08070; margin-bottom: 24px; line-height: 1.7; }
+
+    .options {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 20px;
+    }
+    .opt-btn {
+      background: var(--bg); border: 1.5px solid var(--bord);
+      border-radius: 14px; padding: 16px 12px;
+      font-family: 'Lato', sans-serif; font-size: .84rem; font-weight: 300;
+      color: var(--brown); cursor: pointer; line-height: 1.5;
+      transition: border-color .2s, background .2s, transform .15s;
+    }
+    .opt-btn:hover { border-color: var(--rose2); background: #fff5f7; transform: scale(1.03); }
+    .opt-btn.selected {
+      border-color: var(--rose); background: rgba(232,99,122,.08); font-weight: 400;
+    }
+    .next-btn {
+      width: 100%; padding: 14px;
+      background: var(--rose); color: #fff;
+      font-family: 'Lato', sans-serif; font-size: .88rem; letter-spacing: .08em;
+      border: none; border-radius: 12px; cursor: pointer;
+      box-shadow: 0 8px 28px var(--shad);
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+      opacity: 0; pointer-events: none;
+    }
+    .next-btn.visible { opacity: 1; pointer-events: all; }
+    .next-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px var(--shad); }
+
+    /* ─── DATETIME FORM ─── */
+    .field { margin-bottom: 16px; text-align: left; }
+    .field label {
+      display: block; font-size: .7rem; letter-spacing: .1em;
+      text-transform: uppercase; color: #a08070; margin-bottom: 6px;
+    }
+    .field input {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--bord); border-radius: 10px;
+      background: var(--bg); color: var(--brown);
+      font-family: 'Lato', sans-serif; font-size: .88rem; font-weight: 300;
+      outline: none; transition: border-color .2s, box-shadow .2s;
+    }
+    .field input:focus {
+      border-color: var(--rose2); box-shadow: 0 0 0 3px rgba(232,99,122,.1);
+    }
+
+    /* ─── EXTRAS SCREEN ─── */
+    .potato-label {
+      font-size: .8rem; color: var(--brown); margin-bottom: 8px; text-align: left;
+      font-weight: 400;
+    }
+    .potato-label span { color: var(--rose); font-weight: 600; font-size: .95rem; }
+    .potato-track {
+      display: flex; gap: 8px; justify-content: center; margin-bottom: 20px;
+    }
+    .potato-btn {
+      width: 44px; height: 44px; font-size: 1.4rem;
+      background: var(--bg); border: 1.5px solid var(--bord); border-radius: 12px;
+      cursor: pointer; transition: transform .15s, border-color .2s, background .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .potato-btn:hover { transform: scale(1.15); border-color: var(--rose2); }
+    .potato-btn.active { border-color: var(--rose); background: rgba(232,99,122,.1); transform: scale(1.1); }
+
+    .rain-label {
+      font-size: .8rem; color: var(--brown); margin-bottom: 8px; text-align: left;
+      font-weight: 400;
+    }
+    .rain-options {
+      display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;
+    }
+    .rain-btn {
+      background: var(--bg); border: 1.5px solid var(--bord); border-radius: 12px;
+      padding: 11px 14px; font-size: .82rem; color: var(--brown);
+      font-family: 'Lato', sans-serif; cursor: pointer; text-align: left;
+      transition: border-color .2s, background .2s;
+    }
+    .rain-btn:hover { border-color: var(--rose2); background: #fff5f7; }
+    .rain-btn.selected { border-color: var(--rose); background: rgba(232,99,122,.08); }
+
+    .uwagi-area {
+      width: 100%; padding: 11px 14px;
+      border: 1px solid var(--bord); border-radius: 10px;
+      background: var(--bg); color: var(--brown);
+      font-family: 'Lato', sans-serif; font-size: .85rem; font-weight: 300;
+      outline: none; resize: none; height: 72px;
       transition: border-color .2s, box-shadow .2s;
-      appearance: none;
+      margin-bottom: 16px; display: block; width: 100%;
     }
-    .field input:focus, .field textarea:focus, .field select:focus {
-      border-color: var(--rose2);
-      box-shadow: 0 0 0 3px rgba(232,99,122,.1);
-    }
-    .field textarea { resize: none; height: 88px; }
+    .uwagi-area:focus { border-color: var(--rose2); box-shadow: 0 0 0 3px rgba(232,99,122,.1); }
 
     .btn-send {
-      width: 100%;
-      padding: 15px;
-      background: var(--rose);
-      color: #fff;
-      font-size: .9rem;
-      letter-spacing: .08em;
-      border-radius: 12px;
-      margin-top: 8px;
-      box-shadow: 0 8px 28px var(--shadow);
+      width: 100%; padding: 15px;
+      background: var(--rose); color: #fff;
+      font-family: 'Lato', sans-serif; font-size: .9rem; letter-spacing: .08em;
+      border: none; border-radius: 12px; cursor: pointer;
+      box-shadow: 0 8px 28px var(--shad);
+      transition: transform .2s, box-shadow .2s;
     }
-    .btn-send:hover { transform: translateY(-2px); box-shadow: 0 14px 36px var(--shadow); }
+    .btn-send:hover { transform: translateY(-2px); box-shadow: 0 14px 36px var(--shad); }
     .btn-send:disabled { opacity: .6; cursor: default; transform: none; }
 
-    /* formspree hidden */
-    .f-hidden { display: none; }
-
     /* ─── SUCCESS ─── */
-    .success-emoji { font-size: 3.6rem; margin-bottom: 20px; display: block; }
     .success-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--brown);
-      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif; font-size: 1.9rem;
+      color: var(--brown); margin-bottom: 10px;
     }
-    .success-sub { font-size: .88rem; color: #a08070; line-height: 1.8; }
+    .success-sub { font-size: .88rem; color: #a08070; line-height: 1.8; margin-bottom: 14px; }
+    .summary-box {
+      padding: 14px 18px; background: var(--bg);
+      border: 1px solid var(--bord); border-radius: 14px;
+      font-size: .8rem; color: var(--brown); line-height: 1.9; text-align: left;
+      margin-bottom: 16px;
+    }
+    .kiss-gif {
+      width: 150px; border-radius: 14px;
+      display: block; margin: 0 auto;
+      border: 2px solid var(--bord);
+    }
 
-    /* ─── FLOATING HEARTS ─── */
-    .heart {
-      position: fixed;
-      font-size: 1.4rem;
-      pointer-events: none;
-      animation: floatUp 3s ease-out forwards;
-      z-index: 999;
+    /* ─── FLOATIES ─── */
+    .floaty {
+      position: fixed; font-size: 1.6rem; pointer-events: none;
+      animation: floatUp 3s ease-out forwards; z-index: 999;
     }
     @keyframes floatUp {
-      0%   { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-160px) scale(.6); }
+      0%   { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(-180px) scale(.5) rotate(20deg); }
     }
-
-    /* ─── CONFETTI ─── */
     .confetti-piece {
-      position: fixed;
-      width: 8px; height: 8px;
-      border-radius: 2px;
-      pointer-events: none;
+      position: fixed; width: 8px; height: 8px; border-radius: 2px;
+      pointer-events: none; z-index: 998;
       animation: confettiFall linear forwards;
-      z-index: 998;
     }
     @keyframes confettiFall {
       0%   { opacity: 1; transform: translateY(-20px) rotate(0deg); }
@@ -237,159 +242,287 @@
 </head>
 <body>
 
-<!-- SCREEN 1: pytanie -->
+<!-- S1: pytanie startowe -->
 <div class="screen active" id="s1">
   <div class="card">
-    <span class="petal-deco">🌸</span>
-    <h1>Czy pójdziesz<br>ze mną na <em>randkę?</em></h1>
-    <p class="sub">Mam dla nas pewien plan…<br>ale najpierw potrzebuję Twojej odpowiedzi.</p>
-    <div class="btn-row" id="btnRow">
-      <button class="btn btn-yes" id="btnYes" onclick="goToForm()">Tak, chętnie! 🌷</button>
-      <button class="btn btn-no"  id="btnNo"  onmouseenter="runAway()" ontouchstart="runAway()">Nie</button>
+    <span class="deco">🥔💕</span>
+    <h1>Hej, chcę Cię zapytać<br>o <em>jedną rzecz.</em></h1>
+    <p class="sub">
+      To bardzo poważna i ważna sprawa.<br>
+      Zastanów się dobrze zanim klikniesz.
+    </p>
+    <p style="font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--brown); margin-bottom:28px; font-style:italic;">
+      Czy pójdziesz ze mną na randkę? 🌷
+    </p>
+    <div class="btn-row">
+      <button class="btn btn-yes" onclick="goToCat()">Tak! 🌷</button>
+      <button class="btn btn-no" id="btnNo" onmouseenter="runAway()" ontouchstart="runAway()">Nie</button>
     </div>
   </div>
 </div>
 
-<!-- SCREEN 2: formularz -->
+<!-- S2: gif z kotem -->
 <div class="screen" id="s2">
   <div class="card">
-    <span class="petal-deco">🗓️</span>
-    <div class="form-title">Kiedy do Ciebie<br><em style="font-style:italic;color:var(--rose)">pasuje?</em></div>
-    <p class="form-sub">Wypełnij i wyślij — dostanę powiadomienie 🌹</p>
-
-    <!-- Formspree endpoint — podmień YOUR_FORM_ID -->
-    <form id="dateForm" action="https://formspree.io/f/xojbrkkp" method="POST">
-      <input type="hidden" name="_subject" value="🌸 Odpowiedź na randkę!">
-
-      <div class="field">
-        <label>Data spotkania</label>
-        <input type="date" name="data" id="dateInput" required>
+    <div class="cat-wrap">
+      <img
+        class="cat-gif"
+        src="https://media.tenor.com/images/fb5272f843d38dfe0e5a99fdb3a6e07e/tenor.gif"
+        alt="kotek"
+        onerror="this.src='https://media.tenor.com/NTR0kBj6risAAAAC/cat-dance.gif'; this.onerror=null;"
+      >
+      <div>
+        <div class="cat-title">Wiedziałam, że <em>powiesz tak!</em> 🎉</div>
+        <div class="cat-sub" style="margin-top:8px;">No dobra, wiedziałem. Kotek też wiedział.</div>
       </div>
-      <div class="field">
-        <label>Godzina</label>
-        <input type="time" name="godzina" id="timeInput" required>
-      </div>
-      <div class="field">
-        <label>Uwagi / życzenia (opcjonalne)</label>
-        <textarea name="uwagi" placeholder="Np. chcę lody, nie jem mięsa, mam alergię na koty…"></textarea>
-      </div>
-
-      <button type="submit" class="btn btn-send" id="sendBtn">Wyślij odpowiedź 💌</button>
-    </form>
+      <button class="btn btn-yes" onclick="goToActivity()" style="margin-top:4px;">Dalej →</button>
+    </div>
   </div>
 </div>
 
-<!-- SCREEN 3: sukces -->
+<!-- S3: wybór aktywności -->
 <div class="screen" id="s3">
   <div class="card">
-    <span class="success-emoji">🎉</span>
-    <div class="success-title">Nie mogę się<br>doczekać!</div>
-    <p class="success-sub">Dostałem Twoją odpowiedź 💌<br>Odezwę się wkrótce z detalami.<br><br>Do zobaczenia! 🌸</p>
+    <span class="deco">🗓️</span>
+    <div class="section-title">Co chcesz <em>robić?</em></div>
+    <p class="section-sub">Wybierz jedną opcję — resztą się zajmę 😏</p>
+    <div class="options" id="activityOptions">
+      <button class="opt-btn" onclick="pickActivity(this,'🧺 Piknik na trawie')">🧺 Piknik<br><small style="color:#a08070">na trawie</small></button>
+      <button class="opt-btn" onclick="pickActivity(this,'🍝 Kolacja / jedzenie')">🍝 Kolacja<br><small style="color:#a08070">gdzieś fajnym</small></button>
+      <button class="opt-btn" onclick="pickActivity(this,'🚶 Spacer / miasto')">🚶 Spacer<br><small style="color:#a08070">po mieście</small></button>
+      <button class="opt-btn" onclick="pickActivity(this,'😂 Niespodzianka')">😂 Niespodzianka<br><small style="color:#a08070">ufaj mi</small></button>
+    </div>
+    <button class="next-btn" id="activityNext" onclick="goToDateTime()">Dalej →</button>
+  </div>
+</div>
+
+<!-- S4: data i godzina -->
+<div class="screen" id="s4">
+  <div class="card">
+    <span class="deco">📅</span>
+    <div class="section-title">Kiedy <em>pasuje?</em></div>
+    <p class="section-sub">Wybierz datę i godzinę — reszta już zaplanowana 😌</p>
+    <div class="field">
+      <label>Data</label>
+      <input type="date" id="dateInput">
+    </div>
+    <div class="field">
+      <label>Godzina</label>
+      <input type="time" id="timeInput">
+    </div>
+    <button class="next-btn visible" id="datetimeNext" onclick="goToExtras()" style="margin-top:4px;">Dalej →</button>
+  </div>
+</div>
+
+<!-- S5: dodatkowe (ziemniaczność + deszcz + uwagi) -->
+<div class="screen" id="s5">
+  <div class="card">
+    <span class="deco">🥔</span>
+    <div class="section-title">Jeszcze <em>parę rzeczy.</em></div>
+    <p class="section-sub" style="margin-bottom:20px;">Serio ważne pytania logistyczne.</p>
+
+    <!-- Poziom ziemniaczności -->
+    <div class="potato-label">
+      Poziom ziemniaczności randki: <span id="potatoLabel">🥔🥔🥔</span>
+    </div>
+    <div class="potato-track" id="potatoTrack">
+      <button class="potato-btn" data-val="1" onclick="setPotato(1)">🥔</button>
+      <button class="potato-btn" data-val="2" onclick="setPotato(2)">🥔</button>
+      <button class="potato-btn active" data-val="3" onclick="setPotato(3)">🥔</button>
+      <button class="potato-btn" data-val="4" onclick="setPotato(4)">🥔</button>
+      <button class="potato-btn" data-val="5" onclick="setPotato(5)">🥔</button>
+    </div>
+
+    <!-- Co jeśli będzie padać -->
+    <div class="rain-label">🌧️ Co jeśli będzie padać?</div>
+    <div class="rain-options">
+      <button class="rain-btn" onclick="pickRain(this, 'Piknik w deszczu — romantycznie 🌧️')">🌧️ Piknik w deszczu — romantycznie</button>
+      <button class="rain-btn" onclick="pickRain(this, 'Pizza w domu i film 🍕')">🍕 Pizza w domu i film</button>
+      <button class="rain-btn" onclick="pickRain(this, 'Panikujemy i improwizujemy 😅')">😅 Panikujemy i improwizujemy</button>
+    </div>
+
+    <!-- Dodatkowe uwagi -->
+    <div style="text-align:left; font-size:.8rem; color:var(--brown); font-weight:400; margin-bottom:6px;">
+      💬 Coś jeszcze? <span style="color:#a08070; font-weight:300;">(opcjonalne)</span>
+    </div>
+    <textarea class="uwagi-area" id="uwagi" placeholder="Emoji, życzenia, inne ważne sprawy…"></textarea>
+
+    <button class="btn-send" id="sendBtn" onclick="submitForm()">Wysyłam! 💌</button>
+  </div>
+</div>
+
+<!-- S6: sukces -->
+<div class="screen" id="s6">
+  <div class="card">
+    <span class="deco" style="font-size:2.8rem;">🎉</span>
+    <div class="success-title">Nie mogę się doczekać!</div>
+    <p class="success-sub">Odezwę się wkrótce z detalami 💌</p>
+    <div class="summary-box" id="summaryBox"></div>
+    <img
+      class="kiss-gif"
+      src="https://media.tenor.com/lMdHITURkAkAAAAC/kiss.gif"
+      alt="całus"
+      onerror="this.style.display='none'"
+    >
   </div>
 </div>
 
 <script>
-// ─── SCREEN SWITCH ───
+const state = {
+  aktywnosc: '',
+  data: '',
+  godzina: '',
+  ziemniacznosc: 3,
+  deszcz: '',
+  uwagi: ''
+};
+
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-// ─── UCIEKAJĄCY PRZYCISK NIE ───
-let noBtn = document.getElementById('btnNo');
+// ─── UCIEKAJĄCY "NIE" ───
+const noBtn = document.getElementById('btnNo');
 let noMoves = 0;
+const noTexts = ['Nie','Może nie','Nie no…','Naprawdę nie?','Jeszcze nie','Prawie nie','…nie'];
 
 function runAway() {
   noMoves++;
-  if (noMoves > 8) {
-    // po kilku próbach znika
-    noBtn.style.opacity = '0';
-    noBtn.style.pointerEvents = 'none';
-    return;
-  }
-  const margin = 60;
-  const maxX = window.innerWidth  - noBtn.offsetWidth  - margin;
-  const maxY = window.innerHeight - noBtn.offsetHeight - margin;
-  const x = margin + Math.random() * maxX;
-  const y = margin + Math.random() * maxY;
-  noBtn.style.left = x + 'px';
-  noBtn.style.top  = y + 'px';
-  noBtn.style.transition = 'left .25s ease, top .25s ease';
+  if (noMoves > 7) { noBtn.style.opacity = '0'; noBtn.style.pointerEvents = 'none'; return; }
+  noBtn.textContent = noTexts[Math.min(noMoves, noTexts.length - 1)];
+  const m = 60;
+  const x = m + Math.random() * (window.innerWidth  - noBtn.offsetWidth  - m * 2);
+  const y = m + Math.random() * (window.innerHeight - noBtn.offsetHeight - m * 2);
+  noBtn.style.left = x + 'px'; noBtn.style.top = y + 'px';
+  noBtn.style.transition = 'left .2s ease, top .2s ease';
 }
 
-// ustawienie startowe guzika
 window.addEventListener('load', () => {
-  const rect = document.getElementById('btnYes').getBoundingClientRect();
-  noBtn.style.left = (rect.right + 14) + 'px';
-  noBtn.style.top  = rect.top + 'px';
+  const r = document.querySelector('.btn-yes').getBoundingClientRect();
+  noBtn.style.left = (r.right + 14) + 'px';
+  noBtn.style.top  = r.top + 'px';
 });
 
-// ─── SERDUSZKA przy "Tak" ───
-function spawnHearts() {
-  const emojis = ['💕','🌸','💖','🌷','✨','💝'];
-  for (let i = 0; i < 12; i++) {
-    setTimeout(() => {
-      const h = document.createElement('div');
-      h.className = 'heart';
-      h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-      h.style.left = (10 + Math.random()*80) + 'vw';
-      h.style.bottom = '10vh';
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 3100);
-    }, i * 120);
-  }
+// ─── NAWIGACJA ───
+function goToCat() {
+  spawnFloaties(['💕','🌸','💖','🌷','✨']);
+  setTimeout(() => show('s2'), 350);
 }
 
-function goToForm() {
-  spawnHearts();
-  setTimeout(() => show('s2'), 400);
-  // ustaw min date na dziś
+function goToActivity() {
+  spawnFloaties(['🥔','✨','💫']);
+  setTimeout(() => show('s3'), 350);
+}
+
+function goToDateTime() {
   document.getElementById('dateInput').min = new Date().toISOString().split('T')[0];
+  spawnFloaties(['📅','✨']);
+  setTimeout(() => show('s4'), 350);
 }
 
-// ─── FORMULARZ SUBMIT ───
-const form   = document.getElementById('dateForm');
-const sendBtn = document.getElementById('sendBtn');
+function goToExtras() {
+  const d = document.getElementById('dateInput').value;
+  const t = document.getElementById('timeInput').value;
+  state.data = d;
+  state.godzina = t;
+  spawnFloaties(['🥔','🌧️','💬']);
+  setTimeout(() => show('s5'), 350);
+}
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+// ─── WYBÓR AKTYWNOŚCI ───
+function pickActivity(btn, val) {
+  document.querySelectorAll('#activityOptions .opt-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  state.aktywnosc = val;
+  document.getElementById('activityNext').classList.add('visible');
+}
+
+// ─── ZIEMNIACZNOŚĆ ───
+const potatoDescriptions = ['', 'Prawie bez ziemniaka 😢', 'Lekki ziemniak 🥔', 'Solidny ziemniak 🥔🥔', 'Bardzo ziemniaczna 🥔🥔🥔', 'FULL POTATO 🥔🥔🥔🥔🥔'];
+
+function setPotato(val) {
+  state.ziemniacznosc = val;
+  document.querySelectorAll('.potato-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.val) <= val);
+  });
+  document.getElementById('potatoLabel').textContent = potatoDescriptions[val];
+}
+
+// ─── DESZCZ ───
+function pickRain(btn, val) {
+  document.querySelectorAll('.rain-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  state.deszcz = val;
+}
+
+// ─── SUBMIT ───
+async function submitForm() {
+  state.uwagi = document.getElementById('uwagi').value;
+  const sendBtn = document.getElementById('sendBtn');
   sendBtn.disabled = true;
-  sendBtn.textContent = 'Wysyłam…';
+  sendBtn.textContent = 'Wysyłam… 📮';
+
+  const formData = new FormData();
+  formData.append('_subject', '🌸 Odpowiedź na randkę!');
+  formData.append('aktywnosc', state.aktywnosc);
+  formData.append('data', state.data);
+  formData.append('godzina', state.godzina);
+  formData.append('ziemniacznosc', potatoDescriptions[state.ziemniacznosc]);
+  formData.append('jesli_bedzie_padac', state.deszcz);
+  formData.append('uwagi', state.uwagi);
 
   try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
+    const res = await fetch('https://formspree.io/f/xojbrkkp', {
+      method: 'POST', body: formData,
       headers: { 'Accept': 'application/json' }
     });
     if (res.ok) {
+      document.getElementById('summaryBox').innerHTML =
+        `<b>Co:</b> ${state.aktywnosc || '—'}<br>` +
+        `<b>Kiedy:</b> ${state.data || '—'} o ${state.godzina || '—'}<br>` +
+        `<b>Ziemniaczność:</b> ${potatoDescriptions[state.ziemniacznosc]}<br>` +
+        `<b>Jak zacznie padać:</b> ${state.deszcz || '—'}` +
+        (state.uwagi ? `<br><b>Uwagi:</b> ${state.uwagi}` : '');
       spawnConfetti();
-      setTimeout(() => show('s3'), 300);
-    } else {
-      throw new Error();
-    }
+      setTimeout(() => show('s6'), 300);
+    } else { throw new Error(); }
   } catch {
     sendBtn.disabled = false;
-    sendBtn.textContent = 'Wyślij odpowiedź 💌';
-    alert('Coś poszło nie tak — sprawdź czy Form ID jest poprawne.');
+    sendBtn.textContent = 'Wysyłam! 💌';
+    alert('Coś poszło nie tak — spróbuj jeszcze raz!');
   }
-});
+}
 
-// ─── CONFETTI ───
+// ─── FLOATIES ───
+function spawnFloaties(emojis) {
+  for (let i = 0; i < 12; i++) {
+    setTimeout(() => {
+      const h = document.createElement('div');
+      h.className = 'floaty';
+      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      h.style.left   = (5 + Math.random() * 90) + 'vw';
+      h.style.bottom = (5 + Math.random() * 20) + 'vh';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 3200);
+    }, i * 100);
+  }
+}
+
 function spawnConfetti() {
   const colors = ['#e8637a','#f4a0b0','#ffd6e0','#5c3d2e','#ffb3c6','#fff'];
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 70; i++) {
     setTimeout(() => {
       const c = document.createElement('div');
       c.className = 'confetti-piece';
-      c.style.left = Math.random()*100 + 'vw';
+      c.style.left = Math.random() * 100 + 'vw';
       c.style.top  = '-10px';
-      c.style.background = colors[Math.floor(Math.random()*colors.length)];
-      c.style.animationDuration = (2 + Math.random()*2) + 's';
-      c.style.animationDelay = (Math.random()*.5) + 's';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.animationDuration = (2 + Math.random() * 2) + 's';
+      c.style.animationDelay = (Math.random() * .5) + 's';
       document.body.appendChild(c);
-      setTimeout(() => c.remove(), 4500);
-    }, i * 40);
+      setTimeout(() => c.remove(), 4600);
+    }, i * 35);
   }
 }
 </script>
