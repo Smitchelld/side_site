@@ -32,15 +32,14 @@
         radial-gradient(ellipse 40% 40% at 60% 10%, rgba(255,220,210,.25) 0%, transparent 60%);
     }
 
-    /* ─── SCREENS ─── */
     .screen {
-      position: absolute; inset: 0;
+      position: fixed; inset: 0;
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity .6s ease;
+      visibility: hidden;
     }
-    .screen.active { opacity: 1; pointer-events: all; }
+    .screen.active { opacity: 1; pointer-events: all; visibility: visible; }
 
-    /* ─── CARD ─── */
     .card {
       background: var(--cream);
       border: 1px solid var(--bord);
@@ -57,9 +56,8 @@
       font-size: 2.1rem; color: var(--brown); line-height: 1.25; margin-bottom: 10px;
     }
     h1 em { font-style: italic; color: var(--rose); }
-    .sub { font-size: .88rem; color: #a08070; line-height: 1.8; margin-bottom: 28px; }
+    .sub { font-size: .88rem; color: #a08070; line-height: 1.8; margin-bottom: 22px; }
 
-    /* ─── BUTTONS ─── */
     .btn {
       font-family: 'Lato', sans-serif; font-weight: 400;
       font-size: .9rem; letter-spacing: .06em;
@@ -79,13 +77,10 @@
     .btn-row { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; }
 
     /* ─── CAT SCREEN ─── */
-    .cat-wrap {
-      display: flex; flex-direction: column; align-items: center; gap: 20px;
-    }
+    .cat-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
     .cat-gif {
       width: 200px; height: 200px; object-fit: cover;
-      border-radius: 20px; border: 2px solid var(--bord);
-      display: block;
+      border-radius: 20px; border: 2px solid var(--bord); display: block;
     }
     .cat-title {
       font-family: 'Playfair Display', serif; font-size: 1.7rem;
@@ -94,7 +89,7 @@
     .cat-title em { font-style: italic; color: var(--rose); }
     .cat-sub { font-size: .85rem; color: #a08070; line-height: 1.7; }
 
-    /* ─── ACTIVITY PICKER ─── */
+    /* ─── OPTIONS ─── */
     .section-title {
       font-family: 'Playfair Display', serif; font-size: 1.55rem;
       color: var(--brown); margin-bottom: 6px;
@@ -102,10 +97,7 @@
     .section-title em { font-style: italic; color: var(--rose); }
     .section-sub { font-size: .82rem; color: #a08070; margin-bottom: 24px; line-height: 1.7; }
 
-    .options {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 10px; margin-bottom: 20px;
-    }
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
     .opt-btn {
       background: var(--bg); border: 1.5px solid var(--bord);
       border-radius: 14px; padding: 16px 12px;
@@ -114,9 +106,8 @@
       transition: border-color .2s, background .2s, transform .15s;
     }
     .opt-btn:hover { border-color: var(--rose2); background: #fff5f7; transform: scale(1.03); }
-    .opt-btn.selected {
-      border-color: var(--rose); background: rgba(232,99,122,.08); font-weight: 400;
-    }
+    .opt-btn.selected { border-color: var(--rose); background: rgba(232,99,122,.08); font-weight: 400; }
+
     .next-btn {
       width: 100%; padding: 14px;
       background: var(--rose); color: #fff;
@@ -129,7 +120,7 @@
     .next-btn.visible { opacity: 1; pointer-events: all; }
     .next-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px var(--shad); }
 
-    /* ─── DATETIME FORM ─── */
+    /* ─── FORM ─── */
     .field { margin-bottom: 16px; text-align: left; }
     .field label {
       display: block; font-size: .7rem; letter-spacing: .1em;
@@ -142,19 +133,15 @@
       font-family: 'Lato', sans-serif; font-size: .88rem; font-weight: 300;
       outline: none; transition: border-color .2s, box-shadow .2s;
     }
-    .field input:focus {
-      border-color: var(--rose2); box-shadow: 0 0 0 3px rgba(232,99,122,.1);
-    }
+    .field input:focus { border-color: var(--rose2); box-shadow: 0 0 0 3px rgba(232,99,122,.1); }
 
-    /* ─── EXTRAS SCREEN ─── */
+    /* ─── EXTRAS ─── */
     .potato-label {
-      font-size: .8rem; color: var(--brown); margin-bottom: 8px; text-align: left;
-      font-weight: 400;
+      font-size: .8rem; color: var(--brown); margin-bottom: 8px;
+      text-align: left; font-weight: 400;
     }
-    .potato-label span { color: var(--rose); font-weight: 600; font-size: .95rem; }
-    .potato-track {
-      display: flex; gap: 8px; justify-content: center; margin-bottom: 20px;
-    }
+    .potato-label span { color: var(--rose); font-weight: 600; font-size: .9rem; }
+    .potato-track { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
     .potato-btn {
       width: 44px; height: 44px; font-size: 1.4rem;
       background: var(--bg); border: 1.5px solid var(--bord); border-radius: 12px;
@@ -164,13 +151,8 @@
     .potato-btn:hover { transform: scale(1.15); border-color: var(--rose2); }
     .potato-btn.active { border-color: var(--rose); background: rgba(232,99,122,.1); transform: scale(1.1); }
 
-    .rain-label {
-      font-size: .8rem; color: var(--brown); margin-bottom: 8px; text-align: left;
-      font-weight: 400;
-    }
-    .rain-options {
-      display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;
-    }
+    .rain-label { font-size: .8rem; color: var(--brown); margin-bottom: 8px; text-align: left; font-weight: 400; }
+    .rain-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
     .rain-btn {
       background: var(--bg); border: 1.5px solid var(--bord); border-radius: 12px;
       padding: 11px 14px; font-size: .82rem; color: var(--brown);
@@ -185,9 +167,9 @@
       border: 1px solid var(--bord); border-radius: 10px;
       background: var(--bg); color: var(--brown);
       font-family: 'Lato', sans-serif; font-size: .85rem; font-weight: 300;
-      outline: none; resize: none; height: 72px;
+      outline: none; resize: none; height: 68px;
       transition: border-color .2s, box-shadow .2s;
-      margin-bottom: 16px; display: block; width: 100%;
+      margin-bottom: 16px; display: block;
     }
     .uwagi-area:focus { border-color: var(--rose2); box-shadow: 0 0 0 3px rgba(232,99,122,.1); }
 
@@ -265,17 +247,12 @@
 <div class="screen" id="s2">
   <div class="card">
     <div class="cat-wrap">
-      <img
-        class="cat-gif"
-        src="https://media.tenor.com/images/fb5272f843d38dfe0e5a99fdb3a6e07e/tenor.gif"
-        alt="kotek"
-        onerror="this.src='https://media.tenor.com/NTR0kBj6risAAAAC/cat-dance.gif'; this.onerror=null;"
-      >
+      <img class="cat-gif" src="kot.gif" alt="kotek 🐱">
       <div>
-        <div class="cat-title">Wiedziałam, że <em>powiesz tak!</em> 🎉</div>
-        <div class="cat-sub" style="margin-top:8px;">No dobra, wiedziałem. Kotek też wiedział.</div>
+        <div class="cat-title">Wiedziałem, że<br><em>powiesz tak!</em> 🎉</div>
+        <div class="cat-sub" style="margin-top:8px;">Kotek też wiedział.</div>
       </div>
-      <button class="btn btn-yes" onclick="goToActivity()" style="margin-top:4px;">Dalej →</button>
+      <button class="btn btn-yes" onclick="goToActivity()">Dalej →</button>
     </div>
   </div>
 </div>
@@ -288,8 +265,8 @@
     <p class="section-sub">Wybierz jedną opcję — resztą się zajmę 😏</p>
     <div class="options" id="activityOptions">
       <button class="opt-btn" onclick="pickActivity(this,'🧺 Piknik na trawie')">🧺 Piknik<br><small style="color:#a08070">na trawie</small></button>
-      <button class="opt-btn" onclick="pickActivity(this,'🍝 Kolacja / jedzenie')">🍝 Kolacja<br><small style="color:#a08070">gdzieś fajnym</small></button>
-      <button class="opt-btn" onclick="pickActivity(this,'🚶 Spacer / miasto')">🚶 Spacer<br><small style="color:#a08070">po mieście</small></button>
+      <button class="opt-btn" onclick="pickActivity(this,'🍝 Kolacja')">🍝 Kolacja<br><small style="color:#a08070">gdzieś fajnym</small></button>
+      <button class="opt-btn" onclick="pickActivity(this,'🚶 Spacer po mieście')">🚶 Spacer<br><small style="color:#a08070">po mieście</small></button>
       <button class="opt-btn" onclick="pickActivity(this,'😂 Niespodzianka')">😂 Niespodzianka<br><small style="color:#a08070">ufaj mi</small></button>
     </div>
     <button class="next-btn" id="activityNext" onclick="goToDateTime()">Dalej →</button>
@@ -301,7 +278,7 @@
   <div class="card">
     <span class="deco">📅</span>
     <div class="section-title">Kiedy <em>pasuje?</em></div>
-    <p class="section-sub">Wybierz datę i godzinę — reszta już zaplanowana 😌</p>
+    <p class="section-sub">Wybierz datę i godzinę 😌</p>
     <div class="field">
       <label>Data</label>
       <input type="date" id="dateInput">
@@ -310,22 +287,19 @@
       <label>Godzina</label>
       <input type="time" id="timeInput">
     </div>
-    <button class="next-btn visible" id="datetimeNext" onclick="goToExtras()" style="margin-top:4px;">Dalej →</button>
+    <button class="next-btn visible" onclick="goToExtras()" style="margin-top:4px;">Dalej →</button>
   </div>
 </div>
 
-<!-- S5: dodatkowe (ziemniaczność + deszcz + uwagi) -->
+<!-- S5: extras -->
 <div class="screen" id="s5">
   <div class="card">
     <span class="deco">🥔</span>
     <div class="section-title">Jeszcze <em>parę rzeczy.</em></div>
     <p class="section-sub" style="margin-bottom:20px;">Serio ważne pytania logistyczne.</p>
 
-    <!-- Poziom ziemniaczności -->
-    <div class="potato-label">
-      Poziom ziemniaczności randki: <span id="potatoLabel">🥔🥔🥔</span>
-    </div>
-    <div class="potato-track" id="potatoTrack">
+    <div class="potato-label">Poziom ziemniaczności randki: <span id="potatoLabel">Solidny ziemniak 🥔🥔🥔</span></div>
+    <div class="potato-track">
       <button class="potato-btn" data-val="1" onclick="setPotato(1)">🥔</button>
       <button class="potato-btn" data-val="2" onclick="setPotato(2)">🥔</button>
       <button class="potato-btn active" data-val="3" onclick="setPotato(3)">🥔</button>
@@ -333,15 +307,13 @@
       <button class="potato-btn" data-val="5" onclick="setPotato(5)">🥔</button>
     </div>
 
-    <!-- Co jeśli będzie padać -->
     <div class="rain-label">🌧️ Co jeśli będzie padać?</div>
     <div class="rain-options">
-      <button class="rain-btn" onclick="pickRain(this, 'Piknik w deszczu — romantycznie 🌧️')">🌧️ Piknik w deszczu — romantycznie</button>
-      <button class="rain-btn" onclick="pickRain(this, 'Pizza w domu i film 🍕')">🍕 Pizza w domu i film</button>
-      <button class="rain-btn" onclick="pickRain(this, 'Panikujemy i improwizujemy 😅')">😅 Panikujemy i improwizujemy</button>
+      <button class="rain-btn" onclick="pickRain(this,'Piknik w deszczu — romantycznie 🌧️')">🌧️ Piknik w deszczu — romantycznie</button>
+      <button class="rain-btn" onclick="pickRain(this,'Pizza w domu i film 🍕')">🍕 Pizza w domu i film</button>
+      <button class="rain-btn" onclick="pickRain(this,'Panikujemy i improwizujemy 😅')">😅 Panikujemy i improwizujemy</button>
     </div>
 
-    <!-- Dodatkowe uwagi -->
     <div style="text-align:left; font-size:.8rem; color:var(--brown); font-weight:400; margin-bottom:6px;">
       💬 Coś jeszcze? <span style="color:#a08070; font-weight:300;">(opcjonalne)</span>
     </div>
@@ -358,24 +330,13 @@
     <div class="success-title">Nie mogę się doczekać!</div>
     <p class="success-sub">Odezwę się wkrótce z detalami 💌</p>
     <div class="summary-box" id="summaryBox"></div>
-    <img
-      class="kiss-gif"
-      src="https://media.tenor.com/lMdHITURkAkAAAAC/kiss.gif"
-      alt="całus"
-      onerror="this.style.display='none'"
-    >
+    <img class="kiss-gif" src="calus.gif" alt="całus">
   </div>
 </div>
 
 <script>
-const state = {
-  aktywnosc: '',
-  data: '',
-  godzina: '',
-  ziemniacznosc: 3,
-  deszcz: '',
-  uwagi: ''
-};
+const state = { aktywnosc: '', data: '', godzina: '', ziemniacznosc: 3, deszcz: '', uwagi: '' };
+const potatoDesc = ['','Prawie bez ziemniaka 😢','Lekki ziemniak 🥔','Solidny ziemniak 🥔🥔🥔','Bardzo ziemniaczna 🥔🥔🥔🥔','FULL POTATO 🥔🥔🥔🥔🥔'];
 
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -386,7 +347,6 @@ function show(id) {
 const noBtn = document.getElementById('btnNo');
 let noMoves = 0;
 const noTexts = ['Nie','Może nie','Nie no…','Naprawdę nie?','Jeszcze nie','Prawie nie','…nie'];
-
 function runAway() {
   noMoves++;
   if (noMoves > 7) { noBtn.style.opacity = '0'; noBtn.style.pointerEvents = 'none'; return; }
@@ -397,40 +357,24 @@ function runAway() {
   noBtn.style.left = x + 'px'; noBtn.style.top = y + 'px';
   noBtn.style.transition = 'left .2s ease, top .2s ease';
 }
-
 window.addEventListener('load', () => {
   const r = document.querySelector('.btn-yes').getBoundingClientRect();
   noBtn.style.left = (r.right + 14) + 'px';
   noBtn.style.top  = r.top + 'px';
 });
 
-// ─── NAWIGACJA ───
-function goToCat() {
-  spawnFloaties(['💕','🌸','💖','🌷','✨']);
-  setTimeout(() => show('s2'), 350);
-}
-
-function goToActivity() {
-  spawnFloaties(['🥔','✨','💫']);
-  setTimeout(() => show('s3'), 350);
-}
-
+function goToCat()      { spawnFloaties(['💕','🌸','💖','🌷','✨']); setTimeout(() => show('s2'), 350); }
+function goToActivity() { spawnFloaties(['🥔','✨','💫']); setTimeout(() => show('s3'), 350); }
 function goToDateTime() {
   document.getElementById('dateInput').min = new Date().toISOString().split('T')[0];
-  spawnFloaties(['📅','✨']);
-  setTimeout(() => show('s4'), 350);
+  spawnFloaties(['📅','✨']); setTimeout(() => show('s4'), 350);
 }
-
 function goToExtras() {
-  const d = document.getElementById('dateInput').value;
-  const t = document.getElementById('timeInput').value;
-  state.data = d;
-  state.godzina = t;
-  spawnFloaties(['🥔','🌧️','💬']);
-  setTimeout(() => show('s5'), 350);
+  state.data    = document.getElementById('dateInput').value;
+  state.godzina = document.getElementById('timeInput').value;
+  spawnFloaties(['🥔','🌧️']); setTimeout(() => show('s5'), 350);
 }
 
-// ─── WYBÓR AKTYWNOŚCI ───
 function pickActivity(btn, val) {
   document.querySelectorAll('#activityOptions .opt-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
@@ -438,25 +382,20 @@ function pickActivity(btn, val) {
   document.getElementById('activityNext').classList.add('visible');
 }
 
-// ─── ZIEMNIACZNOŚĆ ───
-const potatoDescriptions = ['', 'Prawie bez ziemniaka 😢', 'Lekki ziemniak 🥔', 'Solidny ziemniak 🥔🥔', 'Bardzo ziemniaczna 🥔🥔🥔', 'FULL POTATO 🥔🥔🥔🥔🥔'];
-
 function setPotato(val) {
   state.ziemniacznosc = val;
   document.querySelectorAll('.potato-btn').forEach(b => {
     b.classList.toggle('active', parseInt(b.dataset.val) <= val);
   });
-  document.getElementById('potatoLabel').textContent = potatoDescriptions[val];
+  document.getElementById('potatoLabel').textContent = potatoDesc[val];
 }
 
-// ─── DESZCZ ───
 function pickRain(btn, val) {
   document.querySelectorAll('.rain-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   state.deszcz = val;
 }
 
-// ─── SUBMIT ───
 async function submitForm() {
   state.uwagi = document.getElementById('uwagi').value;
   const sendBtn = document.getElementById('sendBtn');
@@ -465,23 +404,21 @@ async function submitForm() {
 
   const formData = new FormData();
   formData.append('_subject', '🌸 Odpowiedź na randkę!');
-  formData.append('aktywnosc', state.aktywnosc);
-  formData.append('data', state.data);
-  formData.append('godzina', state.godzina);
-  formData.append('ziemniacznosc', potatoDescriptions[state.ziemniacznosc]);
-  formData.append('jesli_bedzie_padac', state.deszcz);
-  formData.append('uwagi', state.uwagi);
+  formData.append('co',               state.aktywnosc);
+  formData.append('kiedy',            (state.data || '—') + ' o ' + (state.godzina || '—'));
+  formData.append('ziemniacznosc',    potatoDesc[state.ziemniacznosc]);
+  formData.append('jesli_padac',      state.deszcz || '—');
+  formData.append('uwagi',            state.uwagi);
 
   try {
     const res = await fetch('https://formspree.io/f/xojbrkkp', {
-      method: 'POST', body: formData,
-      headers: { 'Accept': 'application/json' }
+      method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
     });
     if (res.ok) {
       document.getElementById('summaryBox').innerHTML =
         `<b>Co:</b> ${state.aktywnosc || '—'}<br>` +
         `<b>Kiedy:</b> ${state.data || '—'} o ${state.godzina || '—'}<br>` +
-        `<b>Ziemniaczność:</b> ${potatoDescriptions[state.ziemniacznosc]}<br>` +
+        `<b>Ziemniaczność:</b> ${potatoDesc[state.ziemniacznosc]}<br>` +
         `<b>Jak zacznie padać:</b> ${state.deszcz || '—'}` +
         (state.uwagi ? `<br><b>Uwagi:</b> ${state.uwagi}` : '');
       spawnConfetti();
@@ -494,7 +431,6 @@ async function submitForm() {
   }
 }
 
-// ─── FLOATIES ───
 function spawnFloaties(emojis) {
   for (let i = 0; i < 12; i++) {
     setTimeout(() => {
@@ -508,7 +444,6 @@ function spawnFloaties(emojis) {
     }, i * 100);
   }
 }
-
 function spawnConfetti() {
   const colors = ['#e8637a','#f4a0b0','#ffd6e0','#5c3d2e','#ffb3c6','#fff'];
   for (let i = 0; i < 70; i++) {
